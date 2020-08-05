@@ -1,2 +1,2 @@
-# SampleHtml
- Sample Example of HTML
+# gautham.github.io
+Sample Example of HTML
