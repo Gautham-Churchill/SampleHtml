@@ -1,0 +1,94 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Side Menu</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./css/sideMenu.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rangeslider.js/2.3.0/rangeslider.min.css">
+</head>
+
+<body>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/30274d73bd.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/rangeslider.js/2.3.0/rangeslider.min.js"></script>
+    <nav id="menu">
+        <ul class="parent-menu">
+            <li><a href="#"><i class="far fa-user"></i></a>
+                <ul>
+                    <li><button type="button" id="active"></button></li>
+                    <li><button type="button" id="inActive"></button></li>
+                    <li><button type="button" id="doNotDisturb"></button></li>
+                </ul>
+            </li>
+            <li><a href="#"><i class="fas fa-share-alt"></i></a></li>
+            <li><a href="#"><i class="fas fa-volume-off"></i></a>
+                <ul>
+                    <li>
+                        <button type="button" id="increase">+</button>
+                    </li>
+                    <li>
+                        <input type="range" data-orientation="vertical">
+                    </li>
+                    <li>
+                        <button type="button" id="decrease">-</button>
+                    </li>
+                    <li>
+                        <output class="hidden"></output>
+                    </li>
+                </ul>
+            </li>
+            <li><button id="expandBtn" onclick="openFullscreen();"><i class="fas fa-expand"></i></button></li>
+            <li><a href="#"><i class="fas fa-cog"></i></a>
+                <ul class="settingsBtn">
+                    <li><button type="button">...</button></li>
+                    <li><button type="button">...</button></li>
+                    <li><button type="button">...</button></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+    <script>
+        var elem = document.documentElement;
+        var $element = $('input[type="range"]');
+        var $output = $('output');
+
+        function openFullscreen() {
+            if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+            } else if (elem.mozRequestFullScreen) { /* Firefox */
+                elem.mozRequestFullScreen();
+            } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari & Opera */
+                elem.webkitRequestFullscreen();
+            } else if (elem.msRequestFullscreen) { /* IE/Edge */
+                elem.msRequestFullscreen();
+            }
+        }
+
+        function updateOutput(el, val) {
+            el.textContent = val;
+        }
+
+        $element
+            .rangeslider({
+                polyfill: false,
+                onInit: function() {
+                    updateOutput($output[0], this.value);
+                }
+            })
+            .on('input', function() {
+                updateOutput($output[0], this.value);
+            });
+        $('#increase').click(function() {
+            var currentVolume = $element.val();
+            $element.val(parseInt(currentVolume) + 10).change();
+        });
+        $('#decrease').click(function() {
+            var currentVolume = $element.val();
+            $element.val(parseInt(currentVolume) - 10).change();
+        });
+    </script>
+</body>
+
+</html>

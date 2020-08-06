@@ -1,0 +1,115 @@
+p,
+ul,
+li,
+div,
+nav {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-family: Calibri;
+}
+
+#menu {
+    overflow: auto;
+    position: relative;
+    z-index: 2;
+}
+
+.parent-menu {
+    background-color: #0c8fff;
+    min-width: 50px;
+    float: right;
+    height: 200px;
+}
+
+#menu ul {
+    list-style-type: none;
+}
+
+#menu ul li a {
+    padding: 10px 15px;
+    display: block;
+    color: #fff;
+    text-decoration: none;
+}
+
+#menu ul li a:hover {
+    background-color: #007ee9;
+}
+
+.settingsBtn li button {
+    padding-top: 10px;
+    margin-top: 10px;
+}
+
+#menu ul li:hover>ul {
+    right: 50px;
+    -webkit-transition: left 200ms ease-in;
+    -moz-transition: left 200ms ease-in;
+    -ms-transition: left 200ms ease-in;
+    transition: left 200ms ease-in;
+}
+
+#menu ul li>ul {
+    padding-top: 5px;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    background-color: rgb(0, 45, 245);
+    top: 0;
+    right: -50px;
+    min-width: 50px;
+    height: 200px;
+    z-index: -1;
+    align-items: center;
+    -webkit-transition: left 200ms ease-in;
+    -moz-transition: left 200ms ease-in;
+    -ms-transition: left 200ms ease-in;
+    transition: left 200ms ease-in;
+}
+
+#menu ul li>ul li a:hover {
+    background-color: #2e2e2e;
+}
+
+#expandBtn {
+    padding: 10px 20px 10px 15px;
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    background-color: 0c8fff;
+    border: none;
+}
+
+#expandBtn:hover {
+    background-color: #007ee9;
+}
+
+#active,
+#inActive,
+#doNotDisturb {
+    padding: 15px 15px;
+    display: block;
+    border: none;
+    cursor: pointer;
+    border-radius: 50%;
+    margin: 8px 8px;
+}
+
+#active {
+    background-color: #4CAF50;
+}
+
+#inActive {
+    background-color: #f5f110;
+}
+
+#doNotDisturb {
+    background-color: #f51010;
+}
+
+.hidden {
+    display: none;
+}
