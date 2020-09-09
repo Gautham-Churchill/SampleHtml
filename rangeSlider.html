@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Side Menu Volume</title>
+</head>
+
+<body>
+    <!-- <style>
+        body {
+            color: #404040;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+            padding: 50px;
+        }
+        
+        h1 {
+            font-size: 1.6em;
+            font-weight: 300;
+        }
+        
+        output {
+            font-size: 2em;
+            padding: .3em;
+        }
+    </style> -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/rangeslider.js/2.3.0/rangeslider.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rangeslider.js/2.3.0/rangeslider.min.css">
+    <h1>Vertical orientation support</h1>
+    <button type="button" id="increase">+</button>
+    <input type="range" data-orientation="vertical">
+    <button type="button" id="decrease">-</button>
+    <output></output>
+    <script>
+        var $element = $('input[type="range"]');
+        var $output = $('output');
+
+        function updateOutput(el, val) {
+            el.textContent = val;
+        }
+
+        $element
+            .rangeslider({
+                polyfill: false,
+                onInit: function() {
+                    updateOutput($output[0], this.value);
+                }
+            })
+            .on('input', function() {
+                updateOutput($output[0], this.value);
+            });
+        $('#increase').click(function() {
+            var currentVolume = $element.val();
+            $element.val(parseInt(currentVolume) + 10).change();
+        });
+        $('#decrease').click(function() {
+            var currentVolume = $element.val();
+            $element.val(parseInt(currentVolume) - 10).change();
+        });
+    </script>
+</body>
+
+</html>
