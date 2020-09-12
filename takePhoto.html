@@ -1,0 +1,39 @@
+
+<!DOCTYPE html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Take Selfie</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+        <style>
+            #container {
+                margin: 0px auto;
+                width: 500px;
+                height: 375px;
+            }
+            #videoElement {
+                width: 500px;
+                height: 375px;
+                background-color: #666;
+            }
+            .center {
+                margin: auto;
+                width: 50%;
+                margin-top: 40px;
+                padding-left: 390px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="container">
+            <video autoplay="true" id="videoElement"></video>            
+            <button id="takePhoto">Take Photo</button>
+        </div>
+        <div class="center">
+            <canvas></canvas>
+        </div>
+        <script src="./js/takePhoto.js" defer></script>
+    </body>
+</html>
